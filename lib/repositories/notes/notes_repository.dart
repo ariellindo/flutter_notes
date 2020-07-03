@@ -34,7 +34,8 @@ class NoteRepository extends BaseNotesRepository {
     await _firestore
         .collection(Paths.notes)
         .document(note.id)
-        .updateData(note.toEntity().toDocument());
+        .updateData(note.toEntity().toDocument())
+        .timeout(_timeoutDuration);
 
     return note;
   }
@@ -43,7 +44,11 @@ class NoteRepository extends BaseNotesRepository {
   /// and returns the note passed
   @override
   Future<Note> deleteNote({@required Note note}) async {
-    await _firestore.collection(Paths.notes).document(note.id).delete();
+    await _firestore
+        .collection(Paths.notes)
+        .document(note.id)
+        .delete()
+        .timeout(_timeoutDuration);
 
     return note;
   }
