@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
 import 'package:flutter_notes/entities/entities.dart';
 
 class User extends Equatable {
