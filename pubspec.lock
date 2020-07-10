@@ -28,7 +28,7 @@ packages:
       name: bloc
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.0.0"
+    version: "5.0.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -91,7 +91,7 @@ packages:
       name: cubit
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.1"
+    version: "0.1.2"
   cupertino_icons:
     dependency: "direct main"
     description:
