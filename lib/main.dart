@@ -19,7 +19,13 @@ class MyApp extends StatelessWidget {
           create: (_) => AuthBloc(
             authRepository: AuthRepository(),
           )..add(AppStarted()),
-        )
+        ),
+        BlocProvider<NotesBloc>(
+          create: (_) => NotesBloc(
+            authRepository: AuthRepository(),
+            noteRepository: NoteRepository(),
+          ),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
