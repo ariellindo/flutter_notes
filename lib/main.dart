@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_notes/blocs/auth/auth_bloc.dart';
+import 'package:flutter_notes/blocs/blocs.dart';
 import 'package:flutter_notes/repositories/repositories.dart';
 import 'package:flutter_notes/screens/screens.dart';
 
 void main() {
+  Bloc.observer = SimpleBlocDelegate();
   runApp(MyApp());
 }
 
