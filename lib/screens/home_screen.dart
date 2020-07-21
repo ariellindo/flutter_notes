@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_notes/blocs/auth/auth_bloc.dart';
 import 'package:flutter_notes/blocs/blocs.dart';
+import 'package:flutter_notes/repositories/repositories.dart';
+import 'package:flutter_notes/screens/screens.dart';
 import 'package:flutter_notes/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -13,6 +15,20 @@ class HomeScreen extends StatelessWidget {
       },
       builder: (context, authState) {
         return Scaffold(
+          floatingActionButton: FloatingActionButton(
+            backgroundColor: Colors.black,
+            foregroundColor: Colors.white,
+            child: const Icon(Icons.add),
+            onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (_) => BlocProvider(
+                create: (_) => NoteDetailsBloc(
+                  authBloc: context.bloc<AuthBloc>(),
+                  noteRepository: NoteRepository(),
+                ),
+                child: NoteDetailScreen(),
+              ),
+            )),
+          ),
           body: BlocBuilder<NotesBloc, NotesState>(
             builder: (context, notesState) {
               return _buildBody(context, authState, notesState);

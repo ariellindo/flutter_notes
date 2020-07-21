@@ -12,7 +12,7 @@ class Note extends Equatable {
   final DateTime timestamp;
 
   const Note({
-    @required this.id,
+    this.id,
     @required this.color,
     @required this.content,
     @required this.timestamp,
