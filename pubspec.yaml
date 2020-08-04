@@ -27,7 +27,7 @@ dependencies:
   firebase_core: ^0.4.5
   equatable: ^1.2.0
   cloud_firestore: ^0.13.7
-  flutter_bloc: ^5.0.0
+  flutter_bloc: ^6.0.0
   rxdart: ^0.24.1
   meta: ^1.1.8
   intl: ^0.16.1

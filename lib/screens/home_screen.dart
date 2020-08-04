@@ -19,15 +19,17 @@ class HomeScreen extends StatelessWidget {
             backgroundColor: Colors.black,
             foregroundColor: Colors.white,
             child: const Icon(Icons.add),
-            onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (_) => BlocProvider(
-                create: (_) => NoteDetailsBloc(
-                  authBloc: context.bloc<AuthBloc>(),
-                  noteRepository: NoteRepository(),
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => BlocProvider(
+                  create: (_) => NoteDetailsBloc(
+                    authBloc: context.bloc<AuthBloc>(),
+                    noteRepository: NoteRepository(),
+                  ),
+                  child: NoteDetailScreen(),
                 ),
-                child: NoteDetailScreen(),
               ),
-            )),
+            ),
           ),
           body: BlocBuilder<NotesBloc, NotesState>(
             builder: (context, notesState) {
@@ -73,7 +75,19 @@ class HomeScreen extends StatelessWidget {
             ),
             notesState is NotesLoaded
                 ? NotesGrid(
-                    notes: notesState.notes, onTap: (note) => print(note))
+                    notes: notesState.notes,
+                    onTap: (note) => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => BlocProvider(
+                          create: (_) => NoteDetailsBloc(
+                            authBloc: context.bloc<AuthBloc>(),
+                            noteRepository: NoteRepository(),
+                          )..add(NoteLoaded(note: note)),
+                          child: NoteDetailScreen(note: note),
+                        ),
+                      ),
+                    ),
+                  )
                 : const SliverPadding(padding: EdgeInsets.zero),
           ],
         ),

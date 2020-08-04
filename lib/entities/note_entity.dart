@@ -45,8 +45,8 @@ class NoteEntity extends Equatable {
       id: doc.documentID,
       color: doc.data['color'] ?? '#FFFFFF',
       content: doc['data'] ?? '',
-      timestamp: doc['data'] ?? '',
-      userId: doc['dat'] ?? '',
+      timestamp: doc.data['timestamp'] ?? '',
+      userId: doc.data["userId"] ?? '',
     );
   }
 }
